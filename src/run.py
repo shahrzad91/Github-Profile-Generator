@@ -1,8 +1,9 @@
 import streamlit as st
+from pathlib import Path
 
 st.set_page_config(page_title="GitHub Profile Generator", page_icon="✨", layout="centered")
 
-st.title("✨ GitHub Profile Readme Generator")
+st.title("✨ GitHub Profile Generator")
 
 #  Personal Information#
 st.header("👤 Personal Info")
@@ -25,3 +26,12 @@ with st.expander("Enter your social media usernames (not links):"):
     instagram = col1.text_input("Instagram")
     youtube = col2.text_input("YouTube")
     medium = col1.text_input("Medium")
+    
+    
+# Select Theme#
+st.header("🎨 Select a Theme")
+theme_dir = Path("themes")
+themes = [theme.name for theme in theme_dir.iterdir() if theme.is_file()]
+theme = st.selectbox("Choose a theme file", themes)
+st.markdown(f"**Selected Theme:** `{theme}`")
+
